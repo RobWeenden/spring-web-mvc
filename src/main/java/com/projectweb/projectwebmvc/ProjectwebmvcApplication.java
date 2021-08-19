@@ -11,6 +11,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * @author robson
+ *
+ */
 @SpringBootApplication
 @EnableTransactionManagement
 @EntityScan(basePackages = "com.projectweb.projectwebmvc.model")
