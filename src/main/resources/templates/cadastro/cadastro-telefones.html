@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+ <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+ 
+<title>CADASTRO</title>
+<style>
+	input[type=submit]{
+		color: white;
+	}
+	
+table{
+	width: 100%;
+}
+table th, table td{
+	border-bottom: 1px solid #2BBBAD;
+}
+table th{
+	background: #eee;
+}
+footer ul li{
+  display: inline;
+  margin: 1px 1px 10px -8px;
+  padding: 5px;
+
+}
+.page-footer {
+	background-color:#2BBBAD;
+
+}
+
+
+
+</style>
+</head>
+<body>
+
+<div class="row">
+			<div class="input-field col s6">
+				<a href="/cadastro"><button class="btn waves-effect waves-light" name="action">Cadastro de Usuarios<i class="material-icons right">call_made</i></button></a>
+			</div>
+		</div>
+
+	<fieldset style="border: 2px solid #2BBBAD; color:#561419;">
+		<legend style="font-size: 20pt">Cadastro dos Telefones</legend>
+			
+			<div th:each="p : ${objPessoa}">
+				<div class="row">
+					<div class="row">
+						<div class="input-field col s6">
+							<label for="nome" class="active">Nome</label>
+							<span th:text = "${p.nome}" style="font-size: 20pt;"></span>
+						</div>
+					<div class="input-field col s6">
+						<label for="sobrenome"  class="active">Sobrenome</label>
+						<span th:text = "${p.sobrenome}" style="font-size: 20pt;"></span>
+					</div>
+					</div>
+				</div>
+			</div>
+	<legend style="font-size: 20pt;">Telefones</legend>
+	<div class="row">
+		<form th:action="@{/addfonePessoa/{id}(id=${objPessoa.id})}" method="post" class="col s12" onsubmit="return validarCampos()? true:false;">
+			<div class="row">
+				<div class="input-field col s6">
+					<label class="active" for="numero">Número:</label>
+					<input type="text" id="numero" name="numero"/>
+				</div>
+				<div class="input-field col s6">
+					<label class="active" for="tipo">Tipo:</label>
+					<input type="text" id="tipo" name="tipo"/>
+				</div>
+				<input type="submit" value="Adicionar" class="waves-effect waves-light btn">
+			</div>
+		</form>	
+	</div>
+</fieldset>
+	<div th:each = "m : ${msg}" class="input-field col s6">
+		<span th:text = "${m}"></span>
+	</div>
+	<table class="highlight centered">
+	<thead>
+		<tr>
+			<th sec:authorize="hasRole('ROLE_ADMIN')">CODIGO</th>
+			<th>NUMERO</th>
+			<th>TIPO</th>
+			<th colspan="2" sec:authorize="hasRole('ROLE_ADMIN')">AÇOES</th>
+		</tr>
+	</thead>
+	<tr th:each = "telefone :${telefones}">
+		<td th:text = "${telefone.id}" sec:authorize="hasRole('ROLE_ADMIN')"></td>
+		<td th:text="${telefone.numero}"></td>
+		<td th:text = "${telefone.tipo}"></td>
+		<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/remover-telefone/{id}(id=${telefone.id})}" >Excluir</a></td>
+	</tr>
+	</table>	
+
+	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/materialize/js/materialize.js"></script>
+	
+	<script type="text/javascript">
+		function validarCampos(){
+			numero = document.getElementById('numero').value;
+			tipo = document.getElementById('tipo').value;
+			
+			if(numero === ''){
+				alert('Numero deve ser informado')
+				return false;
+			}else if(tipo === ''){
+				alert('Tipo deve ser informado');
+				return false;
+			}
+			return true;
+		}
+	
+	</script>
+
+</body>
+</html>
