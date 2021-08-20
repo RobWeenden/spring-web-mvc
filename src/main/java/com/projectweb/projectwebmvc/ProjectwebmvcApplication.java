@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.Ordered;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -30,12 +29,12 @@ public class ProjectwebmvcApplication implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/login").setViewName("/login");
-		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+		registry.setOrder(Ordered.LOWEST_PRECEDENCE);
 
 	}
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {		 
-	registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-		}
+//	@Override
+//	public void addResourceHandlers(ResourceHandlerRegistry registry) {		 
+//	registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+//		}
 
 }
