@@ -8,7 +8,7 @@ public class TesteCrypt {
 		
 		
 		BCryptPasswordEncoder ebc = new BCryptPasswordEncoder();
-		String senha = ebc.encode("1234");
+		String senha = ebc.encode("123");
 		System.out.println(senha);
 	}
 
