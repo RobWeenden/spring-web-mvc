@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.core.Ordered;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -32,9 +31,9 @@ public class ProjectwebmvcApplication implements WebMvcConfigurer {
 //		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 //
 //	}
-//	@Override
-//	public void addResourceHandlers(ResourceHandlerRegistry registry) {		 
-//	registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-//		}
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {		 
+	registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+		}
 
 }
