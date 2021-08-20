@@ -25,13 +25,13 @@ public class ProjectwebmvcApplication implements WebMvcConfigurer {
 		SpringApplication.run(ProjectwebmvcApplication.class, args);
 	}
 
-	
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/login").setViewName("/login");
-		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
-
-	}
+//	
+//	@Override
+//	public void addViewControllers(ViewControllerRegistry registry) {
+//		registry.addViewController("/login").setViewName("/login");
+//		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+//
+//	}
 //	@Override
 //	public void addResourceHandlers(ResourceHandlerRegistry registry) {		 
 //	registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
