@@ -18,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 @EnableTransactionManagement
 @EntityScan(basePackages = "com.projectweb.projectwebmvc.model")
-@ComponentScan(basePackages = {"com.*"})
+@ComponentScan(basePackages = { "com.*" })
 @EnableWebMvc
 public class ProjectwebmvcApplication implements WebMvcConfigurer {
 
@@ -26,16 +26,16 @@ public class ProjectwebmvcApplication implements WebMvcConfigurer {
 		SpringApplication.run(ProjectwebmvcApplication.class, args);
 	}
 
-	
-//	@Override
-//	public void addViewControllers(ViewControllerRegistry registry) {
-//		registry.addViewController("/login").setViewName("/login");
-//		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
-//
-//	}
 	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {		 
-	registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-		}
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addViewController("/login").setViewName("/login");
+		registry.setOrder(Ordered.LOWEST_PRECEDENCE);
+
+	}
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+	}
 
 }
