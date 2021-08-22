@@ -29,7 +29,7 @@ public class ProjectwebmvcApplication implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/login").setViewName("/login");
-		registry.setOrder(Ordered.LOWEST_PRECEDENCE);
+		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 
 	}
 
